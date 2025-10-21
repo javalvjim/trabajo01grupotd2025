@@ -5,25 +5,27 @@ editor: visual
 ---
 
 En primer lugar cargamos las funciones:
+
 ```{r}
 source("teoriadecision_funciones_incertidumbre.R")
 ```
 
-# Ejercicio 1  
+# Ejercicio 1
 
 Aplicar los criterios de decisión bajo incertidumbre al problema cuya matriz de valores numéricos vienen dada en la tabla siguiente:
 
-|  | **e1** | **e2** | **e3** | **e4** | **e5** | **e6** |
-|:-----------:|:--:|:--:|:--:|:--:|:--:|:--:|
-| **d1** | 1500 | 1500 | 1500 | 1500 | 2000 | 1000 |
-| **d2** | 500 | 3000 | 3000 | 3000 | -1000 | 1500 |
-| **d3** | -500 | 2000 | 4500 | 4500 | 3000 | 1500 |
-| **d4** | -2000 | 1000 | 3500 | 6000 | 500 | 1500 |
-| **d5** | 1000 | 3000 | 2500 | -1500 | 1500 | 1500 |
+|        | **e1** | **e2** | **e3** | **e4** | **e5** | **e6** |
+|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| **d1** |  1500  |  1500  |  1500  |  1500  |  2000  |  1000  |
+| **d2** |  500   |  3000  |  3000  |  3000  | -1000  |  1500  |
+| **d3** |  -500  |  2000  |  4500  |  4500  |  3000  |  1500  |
+| **d4** | -2000  |  1000  |  3500  |  6000  |  500   |  1500  |
+| **d5** |  1000  |  3000  |  2500  | -1500  |  1500  |  1500  |
 
 ### Solución
 
 Creamos la matriz de datos:
+
 ```{r}
 tb01 = matrix(c(1500, 1500, 1500, 1500, 2000, 1000,
                 500, 3000, 3000, 3000,-1000, 1500,
@@ -35,129 +37,152 @@ colnames(tb01)=c('e1','e2','e3','e4','e5','e6')
 rownames(tb01)=c('d1','d2','d3','d4','d5')
 ```
 
-1) Considerar situación favorable
+1)  Considerar situación favorable
 
 Aplicamos el criterio de Wald:
+
 ```{r}
 criterio.Wald(tb01, favorable=TRUE)
 ```
+
 De acuerdo con el criterio de Wald, la alternativa óptima es la d1.
 
 Aplicamos el criterio optimista:
+
 ```{r}
 criterio.Optimista(tb01, favorable=TRUE)
 ```
+
 De acuerdo con el criterio optimista, la alternativa óptima es la d4.
 
 Aplicamos el criterio de Hurwicz para alfa=0,4:
+
 ```{r}
 criterio.Hurwicz(tb01, alfa=0.4, favorable=TRUE)
 ```
+
 De acuerdo con el criterio de Hurwicz, la alternativa óptima es la d3.
 
 Veamos cuales son las decisiones óptimas según el criterio de Hurwicz para distintos valores de alfa:
+
 ```{r}
 dibuja.criterio.Hurwicz(tb01, favorable=TRUE)
 dibuja.criterio.Hurwicz_Intervalos(tb01, favorable=TRUE, mostrarGrafico=TRUE)
 ```
-- Si alfa pertenece al intervalo (0 , 0.375), la alternativa óptima es la d1.
-- Si alfa pertenece al intervalo (0.375 , 0.5), la alternativa óptima es la d3.
-- Si alfa pertenece al intervalo (0.5 , 1), la alternativa óptima es la d4.
+
+-   Si alfa pertenece al intervalo (0 , 0.375), la alternativa óptima es la d1.
+-   Si alfa pertenece al intervalo (0.375 , 0.5), la alternativa óptima es la d3.
+-   Si alfa pertenece al intervalo (0.5 , 1), la alternativa óptima es la d4.
 
 Aplicamos el criterio de Savage:
+
 ```{r}
 criterio.Savage(tb01, favorable=TRUE)
 ```
+
 De acuerdo con el criterio de Savage, la alternativa óptima es la d3.
 
 Aplicamos el criterio de Laplace:
+
 ```{r}
 criterio.Laplace(tb01, favorable=TRUE)
 ```
+
 De acuerdo con el criterio de Laplace, la alternativa óptima es la d3.
 
 Aplicamos el criterio del Punto Ideal:
+
 ```{r}
 criterio.PuntoIdeal(tb01, favorable=TRUE)
 ```
+
 De acuerdo con el criterio del Punto Ideal, la alternativa óptima es la d3.
 
+::: callout-tip
+### Conclusiones:
 
-:::{.callout-tip}
-### Conclusiones: 
 En situación favorable (beneficios), y teniendo en cuanta todos los criterios, la mejor alternativa es la d3.
 :::
 
-
-
-2) Considerar situación desfavorable
+2)  Considerar situación desfavorable
 
 Aplicamos el criterio de Wald:
+
 ```{r}
 criterio.Wald(tb01, favorable=FALSE)
 ```
+
 De acuerdo con el criterio de Wald, la alternativa óptima es la d1.
 
 Aplicamos el criterio optimista:
+
 ```{r}
 criterio.Optimista(tb01, favorable=FALSE)
 ```
+
 De acuerdo con el criterio optimista, la alternativa óptima es la d4.
 
 Aplicamos el criterio de Hurwicz para alfa=0,4:
+
 ```{r}
 criterio.Hurwicz(tb01, alfa=0.4, favorable=FALSE)
 ```
+
 De acuerdo con el criterio de Hurwicz, la alternativa óptima es la d5.
 
 Veamos cuales son las decisiones óptimas según el criterio de Hurwicz para distintos valores de alfa:
+
 ```{r}
 dibuja.criterio.Hurwicz(tb01, favorable=FALSE)
 dibuja.criterio.Hurwicz_Intervalos(tb01, favorable=FALSE, mostrarGrafico=TRUE)
 ```
-- Si alfa pertenece al intervalo (0 , 0.286), la alternativa óptima es la d1.
-- Si alfa pertenece al intervalo (0.286 , 0.857), la alternativa óptima es la d5.
-- Si alfa pertenece al intervalo (0.857 , 1), la alternativa óptima es la d4.
+
+-   Si alfa pertenece al intervalo (0 , 0.286), la alternativa óptima es la d1.
+-   Si alfa pertenece al intervalo (0.286 , 0.857), la alternativa óptima es la d5.
+-   Si alfa pertenece al intervalo (0.857 , 1), la alternativa óptima es la d4.
 
 Aplicamos el criterio de Savage:
+
 ```{r}
 criterio.Savage(tb01, favorable=FALSE)
 ```
+
 De acuerdo con el criterio de Savage, la alternativa óptima es la d5.
 
 Aplicamos el criterio de Laplace:
+
 ```{r}
 criterio.Laplace(tb01, favorable=FALSE)
 ```
+
 De acuerdo con el criterio de Laplace, la alternativa óptima es la d5.
 
 Aplicamos el criterio del Punto Ideal:
+
 ```{r}
 criterio.PuntoIdeal(tb01, favorable=FALSE)
 ```
+
 De acuerdo con el criterio del Punto Ideal, la alternativa óptima es la d5.
 
-:::{.callout-tip}
-### Conclusiones: 
+::: callout-tip
+### Conclusiones:
+
 En situación desfavorable (costes), y teniendo en cuanta todos los criterios, la mejor alternativa es la d5.
 :::
-
 
 # Ejercicio 2
 
 Una oficina necesita contratar un plan de Internet confiable para sus operaciones diarias. Han recibido información de tres proveedores:
 
--	Proveedor A1 — Básico: cuota mensual 30€. La velocidad es limitada y puede tener interrupciones 
-  frecuentes, lo que puede generar pérdidas operativas estimadas en 1500 € al año. 
--	Proveedor A2 — Premium: cuota mensual 60€. Garantiza velocidad alta y conexión estable, sin 
-  pérdidas por interrupciones.
--	Proveedor A3 — Intermedio: cuota mensual 40€. Cubre la mayoría de las necesidades, pero si 
-  hay interrupciones graves, la empresa puede tener pérdidas por 700 €. 
-  
-La empresa considera dos estados posibles durante el próximo año: 
+-   Proveedor A1 — Básico: cuota mensual 30€. La velocidad es limitada y puede tener interrupciones frecuentes, lo que puede generar pérdidas operativas estimadas en 1500 € al año.
+-   Proveedor A2 — Premium: cuota mensual 60€. Garantiza velocidad alta y conexión estable, sin pérdidas por interrupciones.
+-   Proveedor A3 — Intermedio: cuota mensual 40€. Cubre la mayoría de las necesidades, pero si hay interrupciones graves, la empresa puede tener pérdidas por 700 €.
 
-- E1(Interrupciones graves): hay fallos que provocan pérdidas económicas. 
-- E2(Sin interrupciones graves): no hay pérdidas adicionales, solo se paga la cuota anual.
+La empresa considera dos estados posibles durante el próximo año:
+
+-   E1(Interrupciones graves): hay fallos que provocan pérdidas económicas.
+-   E2(Sin interrupciones graves): no hay pérdidas adicionales, solo se paga la cuota anual.
 
 La empresa quiere evaluar el coste total del próximo año y tomar una decisión racional bajo incertidumbre. ¿Qué proveedor debería elegir?
 
@@ -165,20 +190,18 @@ La empresa quiere evaluar el coste total del próximo año y tomar una decisión
 
 Planteamiento:
 
-- Un decisor (la empresa)
-- Modelo de costos (desfavorable)
-- Alternativas:
-  - d1: "Proveedor Básico (A1)"
-  - d2: "Proveedor Premium (A2)"
-  - d3: "Proveedor Intermedio (A3)"
-
+-   Un decisor (la empresa)
+-   Modelo de costos (desfavorable)
+-   Alternativas:
+    -   d1: "Proveedor Básico (A1)"
+    -   d2: "Proveedor Premium (A2)"
+    -   d3: "Proveedor Intermedio (A3)"
 
 Matriz de decisión (coste anual):
 
-- A1: 30*12 + 1500 ; 30*12
-- A2: 60*12 ; 60*12
-- A3: 40*12 + 700 ; 40*12
-
+-   A1: 30*12 + 1500 ; 30*12
+-   A2: 60*12 ; 60*12
+-   A3: 40*12 + 700 ; 40*12
 
 ```{r}
 (md11 = 30*12 + 1500)  # A1 en caso de interrupción: cuota anual + pérdidas
@@ -190,6 +213,7 @@ Matriz de decisión (coste anual):
 ```
 
 Introducción de los datos en la tabla
+
 ```{r}
 tb02 = crea.tablaX(c(1860, 360,
                      720, 720,
@@ -201,30 +225,255 @@ tb02
 ```
 
 Aplicamos todos los criterios:
+
 ```{r}
 sol02 = criterio.Todos(tb02, alfa=0.5, favorable=FALSE)
 sol02
 ```
 
-De acuerdo con el criterio de Wald, la alternativa óptima es la A2.
-De acuerdo con el criterio de Optimista, la alternativa óptima es la A1.
-De acuerdo con el criterio de Hurwicz, la alternativa óptima es la A2.
-De acuerdo con el criterio de Savage, la alternativa óptima es la A2.
-De acuerdo con el criterio de Laplace, la alternativa óptima es la A2.
-De acuerdo con el criterio del Punto Ideal, la alternativa óptima es la A2.
+De acuerdo con el criterio de Wald, la alternativa óptima es la A2. De acuerdo con el criterio de Optimista, la alternativa óptima es la A1. De acuerdo con el criterio de Hurwicz, la alternativa óptima es la A2. De acuerdo con el criterio de Savage, la alternativa óptima es la A2. De acuerdo con el criterio de Laplace, la alternativa óptima es la A2. De acuerdo con el criterio del Punto Ideal, la alternativa óptima es la A2.
 
-Veamos cuales son las decisiones óptimas según el criterio de Hurwicz
-para distintos valores de alfa:
+Veamos cuales son las decisiones óptimas según el criterio de Hurwicz para distintos valores de alfa:
+
 ```{r}
 dibuja.criterio.Hurwicz(tb02, favorable=FALSE)
 dibuja.criterio.Hurwicz_Intervalos(tb02, favorable=FALSE, mostrarGrafico=TRUE)
 ```
-- Si alfa pertenece al intervalo (0 , 0.657), la alternativa óptima es la d1.
-- Si alfa pertenece al intervalo (0.657 , 0.85), la alternativa óptima es la d5.
-- Si alfa pertenece al intervalo (0.85 , 1), la alternativa óptima es la d4.
 
+-   Si alfa pertenece al intervalo (0 , 0.657), la alternativa óptima es la d1.
+-   Si alfa pertenece al intervalo (0.657 , 0.85), la alternativa óptima es la d5.
+-   Si alfa pertenece al intervalo (0.85 , 1), la alternativa óptima es la d4.
 
-:::{.callout-tip}
-### Conclusiones: 
+::: callout-tip
+### Conclusiones:
+
 Luego, teniendo en cuenta todos los criterios, la mejor alternativa es "A2. Proveedor Premium". Por tanto, la empresa debe contratar el plan de Internet con el Proveedor A2.
 :::
+
+---
+title: "Soluciones - Trabajo individual Teoría de la Decisión"
+format: html
+editor: visual
+---
+
+# Introducción
+
+En este documento se presentan las **soluciones** a los dos problemas planteados en el trabajo individual de la asignatura **Teoría de la Decisión**.  
+Los ejercicios se resuelven aplicando distintos **criterios de decisión bajo incertidumbre**, utilizando funciones del repositorio [TDecisionCodigo](https://github.com/calote/TDecisionCodigo).
+
+---
+
+# Carga de funciones y preparación del entorno
+
+```{r}
+if(!requireNamespace("knitr", quietly = TRUE)) install.packages("knitr")
+library(knitr)
+source("TDecisionCodigo-master/teoriadecision_funciones_incertidumbre.R")
+```
+
+```{r}
+# Definir la matriz de beneficios 
+
+mat1 <- matrix(c(10,5,8,
+                 4,6,3,
+                 7,9,2,
+                 5,4,6),
+               nrow = 4, byrow = TRUE)
+
+rownames(mat1) <- c("d1","d2","d3","d4")
+colnames(mat1) <- c("e1","e2","e3")
+
+# Mostrar matriz en tabla
+knitr::kable(mat1, caption = "Matriz de beneficios (miles de euros)")
+```
+
+```{r}
+# Aplicar todos los criterios 
+
+# favorable = TRUE indica que la matriz representa beneficios
+# alfa = 0.3 es el coeficiente de optimismo de Hurwicz
+tabla1 <- criterio.Todos(mat1, alfa = 0.3, favorable = TRUE)
+
+# Mostrar la tabla con todos los resultados
+knitr::kable(tabla1, caption = "Resultados de los criterios - Problema 1 (beneficios)")
+
+```
+
+```{r}
+# Criterio de Hurwicz con diferentes valores de alfa 
+
+# α = 0.3 (más pesimista)
+res_hur_03 <- criterio.Hurwicz(mat1, alfa = 0.3, favorable = TRUE)
+
+# α = 0.7 (más optimista)
+res_hur_07 <- criterio.Hurwicz(mat1, alfa = 0.7, favorable = TRUE)
+```
+
+```{r}
+# Decisiones óptimas según Hurwicz 
+
+get_decision_names <- function(res_list, mat) {
+  idx <- res_list$AlternativaOptima
+  idx_num <- as.integer(idx)
+  if (all(is.na(idx_num))) return(NA)
+  paste(rownames(mat)[idx_num], collapse = ", ")
+}
+
+# Obtener nombres de las decisiones óptimas
+dec_hur_03 <- get_decision_names(res_hur_03, mat1)
+dec_hur_07 <- get_decision_names(res_hur_07, mat1)
+
+# Crear tabla resumen
+resumen_hur <- data.frame(
+  Alpha = c(0.3, 0.7),
+  Decision_optima = c(dec_hur_03, dec_hur_07),
+  ValorOptimo = c(res_hur_03$ValorOptimo, res_hur_07$ValorOptimo),
+  stringsAsFactors = FALSE
+)
+
+# Mostrar tabla resumen
+knitr::kable(resumen_hur, caption = "Decisiones óptimas según Hurwicz (α = 0.3 y α = 0.7)")
+```
+
+```{r}
+# Valores de Hurwicz por alternativa 
+
+vals_hur03 <- data.frame(
+  Alternativa = rownames(mat1),
+  ValorHurwicz_0.3 = as.numeric(res_hur_03$ValorAlternativas),
+  ValorHurwicz_0.7 = as.numeric(res_hur_07$ValorAlternativas)
+)
+
+knitr::kable(vals_hur03, caption = "Valores de Hurwicz por alternativa (α=0.3 y α=0.7)")
+```
+
+### Interpretación del problema 1
+
+Después de aplicar todos los criterios de decisión bajo incertidumbre, se ve que la alternativa `d1` destaca claramente en casi todos los enfoques.
+
+- El **criterio de Wald** (Maximin) elige `d1` porque su peor resultado (5) es mejor que el de las demás.
+- El **criterio Optimista** (Maximax) también se queda con `d1`, ya que tiene el mejor resultado posible: 10.
+- Con **Hurwicz**, que combina optimismo y pesimismo, se observa lo siguiente:
+  - Con α = 0.3 (más pesimista), el valor óptimo es 6.5 y la mejor alternativa sigue siendo `d1`.
+  - Con α = 0.7 (más optimista), el valor óptimo sube a 8.5, pero la alternativa óptima sigue siendo `d1`.
+  Esto indica que, incluso cambiando el nivel de optimismo, `d1` se mantiene como la opción más equilibrada.
+- El **criterio de Savage** (Minimax Regret) también favorece a `d1`, con el menor arrepentimiento posible.
+- **Laplace**, que considera todos los estados igual de probables, da como mejor alternativa a `d1`, con un promedio de 7.667.
+- En el **Punto Ideal**, que busca la alternativa más cercana al mejor resultado en cada estado, `d1` vuelve a ser la más cercana.
+- Y en el criterio de **Veces Óptima**, `d1` es la única que aparece como óptima en más de una ocasión (6 veces), mientras que las demás no aparecen ninguna.
+
+En resumen, todos los criterios coinciden en que `d1` es la alternativa más sólida y equilibrada. Aunque `d3` tiene un valor alto en un estado, no logra destacar en los demás. Así que, si tuviera que tomar una decisión con esta información, `d1` sería claramente la más recomendable.
+
+
+
+# Problema 2
+
+```{r}
+# Definir la matriz de costes 
+
+# Costes mensuales por aseguradora
+cuotas <- c(Security = 30, Curadita = 60, Preventiva = 40)
+
+# Costes médicos
+visitas <- 600
+parto <- 3000
+
+# Costes totales por alternativa y escenario
+# e1: No embarazada → solo cuota anual
+# e2: Embarazo y parto dentro del año
+# e3: Embarazo pero parto después del año
+
+costes_security <- c(
+  cuotas["Security"] * 12,
+  cuotas["Security"] * 12 + 0.5 * (visitas + parto),
+  cuotas["Security"] * 12 + 0.5 * visitas
+)
+
+costes_curadita <- c(
+  cuotas["Curadita"] * 12,
+  cuotas["Curadita"] * 12,
+  cuotas["Curadita"] * 12
+)
+
+costes_preventiva <- c(
+  cuotas["Preventiva"] * 12,
+  cuotas["Preventiva"] * 12 + visitas,
+  cuotas["Preventiva"] * 12 + visitas
+)
+
+# Construir la matriz
+mat2 <- rbind(costes_security, costes_curadita, costes_preventiva)
+rownames(mat2) <- c("Security", "Curadita", "Preventiva")
+colnames(mat2) <- c("e1", "e2", "e3")
+
+# Mostrar matriz
+knitr::kable(mat2, caption = "Matriz de costes totales por aseguradora y escenario")
+
+```
+
+```{r}
+# Aplicar criterios de decisión bajo incertidumbre 
+
+# Aplicar todos los criterios con alfa = 0.6
+tabla2 <- criterio.Todos(mat2, alfa = 0.6, favorable = FALSE)
+
+# Mostrar resultados
+knitr::kable(tabla2, caption = "Resultados de los criterios - Problema 2 (costes)")
+
+```
+
+```{r}
+# Criterio de Hurwicz con α = 0.6 
+
+res_hur_06 <- criterio.Hurwicz(mat2, alfa = 0.6, favorable = FALSE)
+
+get_decision_names <- function(res_list, mat) {
+  idx <- res_list$AlternativaOptima
+  idx_num <- as.integer(idx)
+  if (all(is.na(idx_num))) return(NA)
+  paste(rownames(mat)[idx_num], collapse = ", ")
+}
+
+dec_hur_06 <- get_decision_names(res_hur_06, mat2)
+
+# Crear tabla resumen
+resumen_hur <- data.frame(
+  Alpha = 0.6,
+  Decision_optima = dec_hur_06,
+  ValorOptimo = res_hur_06$ValorOptimo,
+  stringsAsFactors = FALSE
+)
+
+knitr::kable(resumen_hur, caption = "Decisión óptima según Hurwicz (α = 0.6)")
+
+```
+
+```{r}
+
+# Valores de Hurwicz por alternativa 
+
+vals_hur <- data.frame(
+  Alternativa = rownames(mat2),
+  ValorHurwicz_0.6 = as.numeric(res_hur_06$ValorAlternativas)
+)
+
+knitr::kable(vals_hur, caption = "Valores de Hurwicz por alternativa (α = 0.6)")
+```
+
+### Interpretación del problema 2
+
+En este problema, Ana está valorando contratar un seguro médico privado y quiere minimizar el coste total durante el primer año, sin saber con certeza si quedará embarazada ni cuándo dará a luz. Se han evaluado tres aseguradoras: **Security**, **Curadita** y **Preventiva**, en función de tres escenarios posibles.
+
+Al aplicar los criterios de decisión bajo incertidumbre:
+
+- El **criterio de Wald** (Maximin) elige **Curadita**, porque su peor escenario (720€) es mejor que el peor de las otras dos opciones.
+- El **criterio Optimista** (Maximax), que se fija en el mejor escenario posible, selecciona **Security**, ya que en el escenario sin embarazo solo cuesta 360€.
+- Con **Hurwicz** (α = 0.6), que mezcla optimismo y pesimismo, hay empate entre **Curadita** y **Preventiva**, ambas con un valor de 1080€.
+- El **criterio de Savage** (Minimax Regret) favorece claramente a **Curadita**, ya que es la opción con menor arrepentimiento posible.
+- El **criterio de Laplace**, que considera todos los escenarios igual de probables, también da como mejor alternativa a **Curadita**.
+- En el **Punto Ideal**, que busca la alternativa más cercana al mejor resultado en cada escenario, **Curadita** vuelve a ser la más equilibrada.
+- Y en el criterio de **Veces Óptima**, **Curadita** aparece como la mejor opción en 5 de los 7 criterios aplicados, mientras que las otras solo aparecen una vez.
+
+En resumen, aunque **Security** tiene el coste más bajo en el mejor escenario, **Curadita** es la opción más estable y segura en todos los escenarios posibles. Si Ana quiere evitar sorpresas y mantener el coste bajo control, **Curadita** sería la alternativa más recomendable.
+
+
