@@ -715,7 +715,7 @@ criterios
 
 La mejor decisión para Dalia es optar por la suscripción anual al gimnasio. Esta alternativa es seleccionada como óptima en 5 de los 6 criterios, lo que indica que, aunque suponga un coste fijo inicial elevado, resulta ser la más estable y segura ante cualquier escenario posible.
 
-PROBLEMA 1
+#PROBLEMA 1
 
 Se considera una tabla de decisión con 3 alternativas ($d_1, d_2, d_3$) y 4 estados de la naturaleza ($\omega_1, \omega_2, \omega_3, \omega_4$). Los valores de la matriz son:
 
@@ -733,7 +733,8 @@ $$
 
 Este problema será resuelto individualmente para cada criterio en las dos situaciones (favorable y desfavorable).
 
-1. Situación Favorable
+## Solución
+1.  Situación Favorable
 
 ```{r}
 vector_p1 = c(10, 2, 15, 5,
@@ -803,6 +804,7 @@ Alternativa Óptima: ", names(res_ideal_fav$AlternativaOptima), "
 ```
 
 2.Situación Desfavorable
+
 ```{r}
 res_wald_desf = criterio.Wald(X1, favorable = FALSE)
 cat("
@@ -853,7 +855,6 @@ Alternativa Óptima: ", names(res_laplace_desf$AlternativaOptima), "
 ")
 ```
 
-
 ```{r}
 res_ideal_desf = criterio.PuntoIdeal(X1, favorable = FALSE)
 cat("
@@ -864,12 +865,12 @@ Alternativa Óptima: ", names(res_ideal_desf$AlternativaOptima), "
 ")
 ```
 
-En la situación favorable, la  mejor alternativa es d1, ya que es la elegida por 5 de los 6 criterios, ya que tiene el máximo potencial de ganancia (15) y la mayor ganancia promedio (8), exceptuando el de Wald.
+## Conclusiones
+En la situación favorable, la mejor alternativa es d1, ya que es la elegida por 5 de los 6 criterios, ya que tiene el máximo potencial de ganancia (15) y la mayor ganancia promedio (8), exceptuando el de Wald.
 
 En la situación desfavorable, la mejor alternativa es d3, ya que es elegida por todos los métodos, ya que tiene el mínimo coste (1) y el menor coste promedio (7).
 
-
-PROBLEMA 2
+#PROBLEMA 2
 
 Una empresa de inversiones está decidiendo entre tres estrategias de inversión ($E_A, E_B, E_C$) para el próximo año. Los resultados dependen de la evolución económica global: Recesión (R), Estancamiento (S), o Expansión (P). La siguiente tabla muestra los **costes** (en miles de euros) asociados a cada estrategia bajo cada escenario. La empresa busca **minimizar** los costes (situación **desfavorable**).
 
@@ -886,7 +887,7 @@ R & S & P \\
 \end{array}
 \right)
 $$
-
+## Solución
 ```{r}
 vector_p2 = c(15, 8, 5,
               12, 10, 7,
@@ -903,5 +904,7 @@ resumen_costes = criterio.Todos(X2, alfa = 0.5, favorable = FALSE)
 print("Resumen de Criterios (Costes):")
 resumen_costes
 ```
+
+## Conclusiones
 
 Para minimizar los costes, podemos observar que la segunda estrategia de inversión (EB) es la más elegida por los criterios, por lo que es la más consistente.
