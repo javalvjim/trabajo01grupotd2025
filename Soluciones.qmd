@@ -666,7 +666,7 @@ Las tres opciones que está considerando:
 
 -   Más costosa si se usa todo el año, pero más segura si Dalia no está segura de su constancia. Entrenamiento al aire libre + app de fitness gratuita
 
-3. **Entrenamiento al aire libre + app de fitness gratuita**
+3.  **Entrenamiento al aire libre + app de fitness gratuita**
 
 -   Costo inicial: unos 60 euros (ropa y accesorios).
 
@@ -714,3 +714,194 @@ criterios
 ## Conclusiones
 
 La mejor decisión para Dalia es optar por la suscripción anual al gimnasio. Esta alternativa es seleccionada como óptima en 5 de los 6 criterios, lo que indica que, aunque suponga un coste fijo inicial elevado, resulta ser la más estable y segura ante cualquier escenario posible.
+
+PROBLEMA 1
+
+Se considera una tabla de decisión con 3 alternativas ($d_1, d_2, d_3$) y 4 estados de la naturaleza ($\omega_1, \omega_2, \omega_3, \omega_4$). Los valores de la matriz son:
+
+$$
+\mathbf{X} = \left(
+\begin{array}{cccc}
+\omega_1 & \omega_2 & \omega_3 & \omega_4 \\
+\hline
+10 & 2 & 15 & 5 \\
+3 & 8 & 6 & 12 \\
+1 & 9 & 11 & 7
+\end{array}
+\right)
+$$
+
+Este problema será resuelto individualmente para cada criterio en las dos situaciones (favorable y desfavorable).
+
+1. Situación Favorable
+
+```{r}
+vector_p1 = c(10, 2, 15, 5,
+              3, 8, 6, 12,
+              1, 9, 11, 7)
+X1 = crea.tablaX(vector_p1, numalternativas = 3, numestados = 4)
+```
+
+```{r}
+res_wald_fav = criterio.Wald(X1, favorable = TRUE)
+cat("
+Criterio de Wald:
+Alternativas (Valores Mínimos): ", res_wald_fav$ValorAlternativas, "
+Valor Óptimo: ", res_wald_fav$ValorOptimo, "
+Alternativa Óptima: ", names(res_wald_fav$AlternativaOptima), "
+")
+```
+
+```{r}
+res_opt_fav = criterio.Optimista(X1, favorable = TRUE)
+cat("
+Criterio Optimista:
+Alternativas (Valores Máximos): ", res_opt_fav$ValorAlternativas, "
+Valor Óptimo: ", res_opt_fav$ValorOptimo, "
+Alternativa Óptima: ", names(res_opt_fav$AlternativaOptima), "
+")
+```
+
+```{r}
+res_hurwicz_fav = criterio.Hurwicz(X1, alfa = 0.5, favorable = TRUE)
+cat("
+Criterio de Hurwicz (alfa = 0.5):
+Alternativas (Valores Ponderados): ", format(res_hurwicz_fav$ValorAlternativas, digits = 3), "
+Valor Óptimo: ", format(res_hurwicz_fav$ValorOptimo, digits = 3), "
+Alternativa Óptima: ", names(res_hurwicz_fav$AlternativaOptima), "
+")
+```
+
+```{r}
+res_savage_fav = criterio.Savage(X1, favorable = TRUE)
+cat("
+Criterio de Savage:
+Alternativas (Máx. Pesar por Alt.)", res_savage_fav$ValorAlternativas, "
+Pesar Mínimo  :", res_savage_fav$ValorOptimo, "
+Alternativa Óptima: ", names(res_savage_fav$AlternativaOptima), "
+")
+```
+
+```{r}
+res_laplace_fav = criterio.Laplace(X1, favorable = TRUE)
+cat("
+Criterio de Laplace:
+Alternativas (Media por Alt.): ", format(res_laplace_fav$ValorAlternativas, digits = 3), "
+Valor Óptimo (Máx. Media): ", format(res_laplace_fav$ValorOptimo, digits = 3), "
+Alternativa Óptima: ", names(res_laplace_fav$AlternativaOptima), "
+")
+```
+
+```{r}
+res_ideal_fav = criterio.PuntoIdeal(X1, favorable = TRUE)
+cat("
+Criterio del Punto Ideal:
+Alternativas (Distancia Euclídea):** ", format(res_ideal_fav$ValorAlternativas, digits = 3), "
+Distancia Mínima: ", format(res_ideal_fav$ValorOptimo, digits = 3), "
+Alternativa Óptima: ", names(res_ideal_fav$AlternativaOptima), "
+")
+```
+
+2.Situación Desfavorable
+```{r}
+res_wald_desf = criterio.Wald(X1, favorable = FALSE)
+cat("
+Criterio de Wald:
+Alternativas (Valores Máximos): ", res_wald_desf$ValorAlternativas, "
+Valor Óptimo: ", res_wald_desf$ValorOptimo, "
+Alternativa Óptima: ", names(res_wald_desf$AlternativaOptima), "
+")
+```
+
+```{r}
+res_opt_desf = criterio.Optimista(X1, favorable = FALSE)
+cat("
+Criterio Optimista:
+Alternativas (Valores Mínimos): ", res_opt_desf$ValorAlternativas, "
+Valor Óptimo: ", res_opt_desf$ValorOptimo, "
+Alternativa Óptima: ", names(res_opt_desf$AlternativaOptima), "
+")
+```
+
+```{r}
+res_hurwicz_desf = criterio.Hurwicz(X1, alfa = 0.5, favorable = FALSE)
+cat("
+Criterio de Hurwicz (alfa = 0.5):
+Alternativas (Valores Ponderados): ", format(res_hurwicz_desf$ValorAlternativas, digits = 3), "
+Valor Óptimo: ", format(res_hurwicz_desf$ValorOptimo, digits = 3), "
+Alternativa Óptima: ", names(res_hurwicz_desf$AlternativaOptima), "
+")
+```
+
+```{r}
+res_savage_desf = criterio.Savage(X1, favorable = FALSE)
+cat("
+Criterio de Savage:
+Alternativas (Máx. Pesar por Alt.):** ", res_savage_desf$ValorAlternativas, "
+Pesar Mínimo: ", res_savage_desf$ValorOptimo, "
+Alternativa Óptima: ", names(res_savage_desf$AlternativaOptima), "
+")
+```
+
+```{r}
+res_laplace_desf = criterio.Laplace(X1, favorable = FALSE)
+cat("
+Criterio de Laplace:
+Alternativas (Media por Alt.): ", format(res_laplace_desf$ValorAlternativas, digits = 3), "
+Valor Óptimo: ", format(res_laplace_desf$ValorOptimo, digits = 3), "
+Alternativa Óptima: ", names(res_laplace_desf$AlternativaOptima), "
+")
+```
+
+
+```{r}
+res_ideal_desf = criterio.PuntoIdeal(X1, favorable = FALSE)
+cat("
+Criterio del Punto Ideal:
+Alternativas (Distancia Euclídea): ", format(res_ideal_desf$ValorAlternativas, digits = 3), "
+Distancia Mínima: ", format(res_ideal_desf$ValorOptimo, digits = 3), "
+Alternativa Óptima: ", names(res_ideal_desf$AlternativaOptima), "
+")
+```
+
+En la situación favorable, la  mejor alternativa es d1, ya que es la elegida por 5 de los 6 criterios, ya que tiene el máximo potencial de ganancia (15) y la mayor ganancia promedio (8), exceptuando el de Wald.
+
+En la situación desfavorable, la mejor alternativa es d3, ya que es elegida por todos los métodos, ya que tiene el mínimo coste (1) y el menor coste promedio (7).
+
+
+PROBLEMA 2
+
+Una empresa de inversiones está decidiendo entre tres estrategias de inversión ($E_A, E_B, E_C$) para el próximo año. Los resultados dependen de la evolución económica global: Recesión (R), Estancamiento (S), o Expansión (P). La siguiente tabla muestra los **costes** (en miles de euros) asociados a cada estrategia bajo cada escenario. La empresa busca **minimizar** los costes (situación **desfavorable**).
+
+La matriz de decisión $\mathbf{X}$ (costes) es:
+
+$$
+\mathbf{X} = \left(
+\begin{array}{ccc}
+R & S & P \\
+\hline
+15 & 8 & 5 \\
+12 & 10 & 7 \\
+14 & 9 & 6
+\end{array}
+\right)
+$$
+
+```{r}
+vector_p2 = c(15, 8, 5,
+              12, 10, 7,
+              14, 9, 6)
+nb_alternativas = c('EA', 'EB', 'EC') 
+nb_estados = c('R', 'S', 'P')
+
+X2 = crea.tablaX(vector_p2, numalternativas = 3, numestados = 3,
+                nb_alternativas = nb_alternativas, nb_estados = nb_estados)
+```
+
+```{r}
+resumen_costes = criterio.Todos(X2, alfa = 0.5, favorable = FALSE)
+print("Resumen de Criterios (Costes):")
+resumen_costes
+```
+
+Para minimizar los costes, podemos observar que la segunda estrategia de inversión (EB) es la más elegida por los criterios, por lo que es la más consistente.
