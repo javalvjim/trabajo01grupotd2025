@@ -36,64 +36,130 @@ La empresa quiere evaluar el coste total del próximo año y tomar una decisión
 
 ## Problema 3: Tabla de decisión inventada
 
-Una empresa debe elegir entre cuatro estrategias posibles:  
-- **d1**: Invertir en publicidad  
-- **d2**: Lanzar un nuevo producto  
-- **d3**: Expandirse a otro mercado  
-- **d4**: Mantener la estrategia actual  
+Una empresa debe elegir entre cuatro estrategias posibles:\
+- **d1**: Invertir en publicidad\
+- **d2**: Lanzar un nuevo producto\
+- **d3**: Expandirse a otro mercado\
+- **d4**: Mantener la estrategia actual
 
-Frente a tres escenarios económicos:  
-- **e1**: Crecimiento del mercado  
-- **e2**: Estancamiento  
-- **e3**: Recesión  
+Frente a tres escenarios económicos:\
+- **e1**: Crecimiento del mercado\
+- **e2**: Estancamiento\
+- **e3**: Recesión
 
 Los beneficios esperados (en miles de euros) son:
 
-|        | e1 | e2 | e3 |
-|--------|----:|----:|----:|
-| d1     | 10 |  5 |  8 |
-| d2     |  4 |  6 |  3 |
-| d3     |  7 |  9 |  2 |
-| d4     |  5 |  4 |  6 |
+|     |  e1 |  e2 |  e3 |
+|-----|----:|----:|----:|
+| d1  |  10 |   5 |   8 |
+| d2  |   4 |   6 |   3 |
+| d3  |   7 |   9 |   2 |
+| d4  |   5 |   4 |   6 |
 
 Este problema se resolverá aplicando los siguientes criterios de decisión bajo incertidumbre:
 
-- **Maximax**  
-- **Maximin**  
-- **Laplace**  
-- **Hurwicz** (con α = 0.3 y α = 0.7)  
-- **Minimax Regret**
+-   **Maximax**\
+-   **Maximin**\
+-   **Laplace**\
+-   **Hurwicz** (con α = 0.3 y α = 0.7)\
+-   **Minimax Regret**
 
 Se analizará tanto en situación **favorable** (beneficios) como **desfavorable** (costes), transformando la matriz si es necesario. Al final se extraerá una conclusión sobre cuál sería la mejor estrategia según cada criterio.
 
----
+------------------------------------------------------------------------
 
 ## Problema 4: Seguro médico (situación realista)
 
 Ana está valorando contratar un seguro médico privado. Tiene tres opciones:
 
-- **Security**: Cuota mensual de 30€, cubre solo el 50% de los gastos durante el primer año.  
-- **Curadita**: Cuota mensual de 60€, cubre todos los gastos desde el principio.  
-- **Preventiva**: Cuota mensual de 40€, cubre todo excepto el ingreso en clínica.
+-   **Security**: Cuota mensual de 30€, cubre solo el 50% de los gastos durante el primer año.\
+-   **Curadita**: Cuota mensual de 60€, cubre todos los gastos desde el principio.\
+-   **Preventiva**: Cuota mensual de 40€, cubre todo excepto el ingreso en clínica.
 
 Ana cree que puede quedarse embarazada y dar a luz antes o después de cumplir un año con el seguro. Los gastos estimados si queda embarazada son:
 
-- Visitas médicas, análisis, ecografías, etc.: **600€**  
-- Parto (ingreso en clínica): **3000€**
+-   Visitas médicas, análisis, ecografías, etc.: **600€**\
+-   Parto (ingreso en clínica): **3000€**
 
 Los escenarios posibles son:
 
-- **e1**: No queda embarazada durante el primer año  
-- **e2**: Queda embarazada y da a luz dentro del primer año  
-- **e3**: Queda embarazada pero da a luz después de cumplir el año
+-   **e1**: No queda embarazada durante el primer año\
+-   **e2**: Queda embarazada y da a luz dentro del primer año\
+-   **e3**: Queda embarazada pero da a luz después de cumplir el año
 
 Se construirá una matriz de **costes totales** para cada aseguradora en función del escenario. Se aplicarán los siguientes criterios de decisión bajo incertidumbre:
 
-- **Maximin**  
-- **Laplace**  
-- **Hurwicz** (con α = 0.6)  
-- **Minimax Regret**
+-   **Maximin**\
+-   **Laplace**\
+-   **Hurwicz** (con α = 0.6)\
+-   **Minimax Regret**
 
 El objetivo será determinar cuál es la opción más recomendable para Ana si quiere **minimizar el coste total** durante el primer año.
 
+# Problema 5:
 
+Aplicar los diferentes criterios de decisión bajo incertidumbre al problema representado por la siguiente matriz de valores.
+
+**a) Situación favorable**
+
+|     | e1  | e2  | e3  |
+|-----|-----|-----|-----|
+| d1  | 12  | 2   | 30  |
+| d2  | 4   | 25  | 13  |
+| d3  | 30  | 6   | 7   |
+| d4  | 8   | 12  | 11  |
+
+**b) Situación desfavorable**
+
+|     | e1  | e2  | e3  |
+|-----|-----|-----|-----|
+| d1  | 3   | 1   | 20  |
+| d2  | 40  | 25  | 3   |
+| d3  | 1   | 50  | 4   |
+| d4  | 23  | 2   | 20  |
+
+# Problema 6:
+
+Dalia ha decidido que quiere mejorar su forma física y empezar una rutina de ejercicio regular. El problema es que no sabe exactamente qué tan constante será con el deporte, y no quiere gastar más dinero del necesario si luego se aburre o tiene que dejarlo por algún imprevisto. Ha encontrado tres opciones distintas para hacer ejercicio, pero no sabe cuál es la más conveniente teniendo en cuenta que su objetivo es minimizar el gasto total a lo largo de un año.
+
+Las tres opciones que está considerando:
+
+**1. Abono anual en un gimnasio**
+
+-   Precio: 450 euros por un año completo, que se paga de una sola vez.
+
+-   No existe reembolso si deja de ir.
+
+**2. Suscripción mensual flexible**
+
+-   Precio: 45 euros al mes. Se puede cancelar en cualquier momento.
+
+-   Más costosa si se usa todo el año, pero más segura si Dalia no está segura de su constancia.
+
+**3. Entrenamiento al aire libre + app de fitness gratuita**
+
+-   Costo inicial: unos 60 euros (ropa y accesorios).
+
+-   No hay cuota mensual. Usa una app gratuita para entrenar al parque.
+
+-   Si hace mal tiempo o se desmotiva, probablemente se apunte más adelante a clases de pilates con un coste estimado de 30 euros al mes, lo que aumentaría el coste anual hasta 180 euros aproximadamente.
+
+**Situaciones posibles en el futuro:**
+
+-   e1: Está muy motivada y entrena regularmente durante todo el año.
+
+-   e2: Empieza bien pero después de 3 o 4 meses se cansa y deja de ir.
+
+-   e3: Es inconstante: entrena algunos meses sí, otros no.
+
+-   e4: Tiene una lesión o una situación personal que la obliga a dejar de entrenar.
+
+**Matriz de costes totales estimados (en euros)**
+
+| Opción | e1: Constante | e2: Se cansa | e3: Irregular | e4: Deja de entrenar |
+|---------------|---------------|---------------|---------------|---------------|
+| d1 – Gimnasio anual | 450 € | 450 € | 450 € | 450 € |
+| d2 – Mensual flexible | 540 € | 180 € | 270 € | 45 € |
+| d3 – Aire libre + app | 60 € | 180 € | 120 € | 60 € |
+
+¿Qué opción de entrenamiento debería elegir Dalia para minimizar el coste total durante un año?

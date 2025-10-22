@@ -258,17 +258,17 @@ editor: visual
 
 # Introducción
 
-En este documento se presentan las **soluciones** a los dos problemas planteados en el trabajo individual de la asignatura **Teoría de la Decisión**.  
+En este documento se presentan las **soluciones** a los dos problemas planteados en el trabajo individual de la asignatura **Teoría de la Decisión**.\
 Los ejercicios se resuelven aplicando distintos **criterios de decisión bajo incertidumbre**, utilizando funciones del repositorio [TDecisionCodigo](https://github.com/calote/TDecisionCodigo).
 
----
+------------------------------------------------------------------------
 
 # Carga de funciones y preparación del entorno
 
 ```{r}
 if(!requireNamespace("knitr", quietly = TRUE)) install.packages("knitr")
 library(knitr)
-source("TDecisionCodigo-master/teoriadecision_funciones_incertidumbre.R")
+
 ```
 
 ```{r}
@@ -351,20 +351,17 @@ knitr::kable(vals_hur03, caption = "Valores de Hurwicz por alternativa (α=0.3 y
 
 Después de aplicar todos los criterios de decisión bajo incertidumbre, se ve que la alternativa `d1` destaca claramente en casi todos los enfoques.
 
-- El **criterio de Wald** (Maximin) elige `d1` porque su peor resultado (5) es mejor que el de las demás.
-- El **criterio Optimista** (Maximax) también se queda con `d1`, ya que tiene el mejor resultado posible: 10.
-- Con **Hurwicz**, que combina optimismo y pesimismo, se observa lo siguiente:
-  - Con α = 0.3 (más pesimista), el valor óptimo es 6.5 y la mejor alternativa sigue siendo `d1`.
-  - Con α = 0.7 (más optimista), el valor óptimo sube a 8.5, pero la alternativa óptima sigue siendo `d1`.
-  Esto indica que, incluso cambiando el nivel de optimismo, `d1` se mantiene como la opción más equilibrada.
-- El **criterio de Savage** (Minimax Regret) también favorece a `d1`, con el menor arrepentimiento posible.
-- **Laplace**, que considera todos los estados igual de probables, da como mejor alternativa a `d1`, con un promedio de 7.667.
-- En el **Punto Ideal**, que busca la alternativa más cercana al mejor resultado en cada estado, `d1` vuelve a ser la más cercana.
-- Y en el criterio de **Veces Óptima**, `d1` es la única que aparece como óptima en más de una ocasión (6 veces), mientras que las demás no aparecen ninguna.
+-   El **criterio de Wald** (Maximin) elige `d1` porque su peor resultado (5) es mejor que el de las demás.
+-   El **criterio Optimista** (Maximax) también se queda con `d1`, ya que tiene el mejor resultado posible: 10.
+-   Con **Hurwicz**, que combina optimismo y pesimismo, se observa lo siguiente:
+    -   Con α = 0.3 (más pesimista), el valor óptimo es 6.5 y la mejor alternativa sigue siendo `d1`.
+    -   Con α = 0.7 (más optimista), el valor óptimo sube a 8.5, pero la alternativa óptima sigue siendo `d1`. Esto indica que, incluso cambiando el nivel de optimismo, `d1` se mantiene como la opción más equilibrada.
+-   El **criterio de Savage** (Minimax Regret) también favorece a `d1`, con el menor arrepentimiento posible.
+-   **Laplace**, que considera todos los estados igual de probables, da como mejor alternativa a `d1`, con un promedio de 7.667.
+-   En el **Punto Ideal**, que busca la alternativa más cercana al mejor resultado en cada estado, `d1` vuelve a ser la más cercana.
+-   Y en el criterio de **Veces Óptima**, `d1` es la única que aparece como óptima en más de una ocasión (6 veces), mientras que las demás no aparecen ninguna.
 
 En resumen, todos los criterios coinciden en que `d1` es la alternativa más sólida y equilibrada. Aunque `d3` tiene un valor alto en un estado, no logra destacar en los demás. Así que, si tuviera que tomar una decisión con esta información, `d1` sería claramente la más recomendable.
-
-
 
 # Problema 2
 
@@ -466,14 +463,254 @@ En este problema, Ana está valorando contratar un seguro médico privado y quie
 
 Al aplicar los criterios de decisión bajo incertidumbre:
 
-- El **criterio de Wald** (Maximin) elige **Curadita**, porque su peor escenario (720€) es mejor que el peor de las otras dos opciones.
-- El **criterio Optimista** (Maximax), que se fija en el mejor escenario posible, selecciona **Security**, ya que en el escenario sin embarazo solo cuesta 360€.
-- Con **Hurwicz** (α = 0.6), que mezcla optimismo y pesimismo, hay empate entre **Curadita** y **Preventiva**, ambas con un valor de 1080€.
-- El **criterio de Savage** (Minimax Regret) favorece claramente a **Curadita**, ya que es la opción con menor arrepentimiento posible.
-- El **criterio de Laplace**, que considera todos los escenarios igual de probables, también da como mejor alternativa a **Curadita**.
-- En el **Punto Ideal**, que busca la alternativa más cercana al mejor resultado en cada escenario, **Curadita** vuelve a ser la más equilibrada.
-- Y en el criterio de **Veces Óptima**, **Curadita** aparece como la mejor opción en 5 de los 7 criterios aplicados, mientras que las otras solo aparecen una vez.
+-   El **criterio de Wald** (Maximin) elige **Curadita**, porque su peor escenario (720€) es mejor que el peor de las otras dos opciones.
+-   El **criterio Optimista** (Maximax), que se fija en el mejor escenario posible, selecciona **Security**, ya que en el escenario sin embarazo solo cuesta 360€.
+-   Con **Hurwicz** (α = 0.6), que mezcla optimismo y pesimismo, hay empate entre **Curadita** y **Preventiva**, ambas con un valor de 1080€.
+-   El **criterio de Savage** (Minimax Regret) favorece claramente a **Curadita**, ya que es la opción con menor arrepentimiento posible.
+-   El **criterio de Laplace**, que considera todos los escenarios igual de probables, también da como mejor alternativa a **Curadita**.
+-   En el **Punto Ideal**, que busca la alternativa más cercana al mejor resultado en cada escenario, **Curadita** vuelve a ser la más equilibrada.
+-   Y en el criterio de **Veces Óptima**, **Curadita** aparece como la mejor opción en 5 de los 7 criterios aplicados, mientras que las otras solo aparecen una vez.
 
 En resumen, aunque **Security** tiene el coste más bajo en el mejor escenario, **Curadita** es la opción más estable y segura en todos los escenarios posibles. Si Ana quiere evitar sorpresas y mantener el coste bajo control, **Curadita** sería la alternativa más recomendable.
 
+# Problema 1
 
+Aplicar los diferentes criterios de decisión bajo incertidumbre al problema representado por la siguiente matriz de valores.
+
+### a) Situación favorable
+
+Matriz de decisión
+
+```{r cars}
+matriz <- crea.tablaX(c(12,2,30,
+                       4,25,13,
+                       30,6,7,
+                       8,12,11),numalternativas=4, numestados=3)
+
+colnames(matriz)=c('e1','e2','e3')
+rownames(matriz) =c('d1','d2','d3','d4')
+```
+
+**Criterio de Wald**
+
+```{r}
+criterio.Wald(matriz,favorable=TRUE)
+```
+
+La mejor alternativa es d4
+
+**Criterio Optimista (maximax)**
+
+```{r}
+criterio.Optimista(matriz, favorable = TRUE)
+```
+
+Alternativas mejores segun el criterio optimista: d1 y d3
+
+**Criterio de Hurwizc**
+
+```{r}
+Hurwizc <- criterio.Hurwicz(matriz, alfa = 0.5, favorable = TRUE)
+Hurwizc
+```
+
+Tomando un alfa = 0.5, la decision mejor es d3
+
+```{r}
+criterio.Hurwicz.General(matriz, favorable = TRUE)
+dibuja.criterio.Hurwicz(matriz, favorable = TRUE)
+```
+
+```{r}
+resultados <- dibuja.criterio.Hurwicz_Intervalos(matriz, favorable = TRUE)
+resultados$IntervalosAlfa
+```
+
+-   Para valores de alfa en el intervalo (0, 0.1) la mejor alternativa es d4.
+
+-   Para valores de alfa en el intervalo (0.1, 1) la mejor alternativa es d3.
+
+-   Para alfa igual a 1 la alternativa mejor es d1
+
+**Criterio Laplace**
+
+```{r}
+criterio.Laplace(matriz, favorable = TRUE)
+```
+
+La mejor alternativa es d1
+
+**Criterio Savage**
+
+```{r}
+criterio.Savage(matriz, favorable = TRUE)
+```
+
+La mejor alternativa es d4
+
+**Criterio punto ideal**
+
+```{r}
+criterio.PuntoIdeal(matriz, favorable = TRUE)
+```
+
+La mejor alternativa es d1
+
+#### Conclusiones
+
+```{r}
+criterios <- criterio.Todos(matriz, 0.5, T)
+criterios
+```
+
+En un escenario favorable, y considerando todos los criterios de decisión, la alternativa óptima resulta ser la d1.
+
+### b) Situación desfavorable
+
+Matriz de decisión
+
+```{r}
+matriz2 <- crea.tablaX(c(3,1,30,
+                        40,25,3,
+                        1,50,4,
+                        23,2,20),numalternativas=4, numestados=3)
+
+colnames(matriz2)=c('e1','e2','e3')
+rownames(matriz2) =c('d1','d2','d3','d4')
+```
+
+**Criterio de Wald**
+
+```{r}
+criterio.Wald(matriz2,favorable=F)
+```
+
+La mejor alternativa es d4
+
+**Criterio Optimista (maximax)**
+
+```{r}
+criterio.Optimista(matriz2, favorable = F)
+```
+
+Las alternativas mejores segun el criterio optimista: d1 y d3
+
+**Criterio de Hurwizc**
+
+```{r}
+Hurwizc <- criterio.Hurwicz(matriz2, alfa = 0.5, favorable = F)
+```
+
+Tomando un alfa = 0.5, la decision mejor es d4
+
+```{r}
+criterio.Hurwicz.General(matriz2, favorable = F)
+dibuja.criterio.Hurwicz(matriz2, favorable = F)
+
+resultados <- dibuja.criterio.Hurwicz_Intervalos(matriz2, favorable = F)
+resultados$IntervalosAlfa
+```
+
+Para valores alfa en el intervalo (0,0.875) la mejor alternativa es d4.
+
+Para valores alfa en el intervalo (0.875,1) la mejor alternativa es d1.
+
+**Criterio Laplace**
+
+```{r}
+criterio.Laplace(matriz2, favorable = F)
+```
+
+La mejor alternativa es d1
+
+**Criterio Savage**
+
+```{r}
+criterio.Savage(matriz2, favorable = F)
+```
+
+La mejor alternativa es d4
+
+**Criterio punto ideal**
+
+```{r}
+criterio.PuntoIdeal(matriz2, favorable = F)
+```
+
+La mejor alternativa es d1
+
+#### Conclusiones
+
+```{r}
+criterios <- criterio.Todos(matriz, 0.5, T)
+criterios
+```
+
+En un escenario desfavorable, y considerando todos los criterios de decisión, la alternativa óptima resulta ser la d2.
+
+# Problema 2
+
+Dalia ha decidido que quiere mejorar su forma física y empezar una rutina de ejercicio regular. El problema es que no sabe exactamente qué tan constante será con el deporte, y no quiere gastar más dinero del necesario si luego se aburre o tiene que dejarlo por algún imprevisto. Ha encontrado tres opciones distintas para hacer ejercicio, pero no sabe cuál es la más conveniente teniendo en cuenta que su objetivo es minimizar el gasto total a lo largo de un año.
+
+Las tres opciones que está considerando:
+
+1.  **Abono anual en un gimnasio completo**
+
+-   Precio: 450 euros por un año completo, que se paga de una sola vez.
+
+-   No existe reembolso si deja de ir.
+
+2.  **Suscripción mensual flexible**
+
+-   Precio: 45 euros al mes. Se puede cancelar en cualquier momento.
+
+-   Más costosa si se usa todo el año, pero más segura si Dalia no está segura de su constancia. Entrenamiento al aire libre + app de fitness gratuita
+
+3. **Entrenamiento al aire libre + app de fitness gratuita**
+
+-   Costo inicial: unos 60 euros (ropa y accesorios).
+
+-   No hay cuota mensual. Usa una app gratuita para entrenar al parque.
+
+-   Si hace mal tiempo o se desmotiva, probablemente se apunte más adelante a clases de pilates con un coste estimado de 30 euros al mes, lo que aumentaría el coste anual hasta 180 euros aproximadamente.
+
+**Situaciones posibles en el futuro:**
+
+-   Está muy motivada y entrena regularmente durante todo el año.
+
+-   Empieza bien pero después de 3 o 4 meses se cansa y deja de ir.
+
+-   Es inconstante: entrena algunos meses sí, otros no.
+
+-   Tiene una lesión o una situación personal que la obliga a dejar de entrenar.
+
+**Matriz de costes totales estimados (en euros)**
+
+| Opción | e1: Constante | e2: Se cansa | e3: Irregular | e4: Deja de entrenar |
+|---------------|---------------|---------------|---------------|---------------|
+| d1 – Gimnasio anual | 450 € | 450 € | 450 € | 450 € |
+| d2 – Mensual flexible | 540 € | 180 € | 270 € | 45 € |
+| d3 – Aire libre + app | 60 € | 180 € | 120 € | 60 € |
+
+¿Qué opción de entrenamiento debería elegir Dalia para minimizar el coste total durante un año?
+
+## Solucion
+
+```{r}
+matriz <- crea.tablaX(c(450, 450, 450, 450,
+                        540, 180, 270, 45,
+                        60, 180, 120, 60),numalternativas=3, numestados=4)
+colnames(matriz)=c('Constante','Se cansa','Irregular','Deja de entrenar')
+rownames(matriz) =c('anual','mensual','aire libre+app')
+```
+
+Procedo a aplicar todos los criterios de decisión bajo incertidumbre con el objetivo de determinar cuál de las tres opciones representa el menor coste posible, según los distintos escenarios que podrían presentarse.
+
+```{r}
+criterios <- criterio.Todos(matriz, 0.5, T)
+criterios
+```
+
+## Conclusiones
+
+La mejor decisión para Dalia es optar por la suscripción anual al gimnasio. Esta alternativa es seleccionada como óptima en 5 de los 6 criterios, lo que indica que, aunque suponga un coste fijo inicial elevado, resulta ser la más estable y segura ante cualquier escenario posible.
