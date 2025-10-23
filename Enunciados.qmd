@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-# Ejercicio 1
+# Problema 1
 
 Aplicar los criterios de decisión bajo incertidumbre al problema cuya matriz de valores numéricos vienen dada en la tabla siguiente:
 
@@ -19,7 +19,7 @@ Aplicar los criterios de decisión bajo incertidumbre al problema cuya matriz de
 1)  Considerar situación favorable
 2)  Considerar situación desfavorable
 
-# Ejercicio 2
+# Problema 2
 
 Una oficina necesita contratar un plan de Internet confiable para sus operaciones diarias. Han recibido información de tres proveedores:
 
@@ -165,7 +165,7 @@ Las tres opciones que está considerando:
 ¿Qué opción de entrenamiento debería elegir Dalia para minimizar el coste total durante un año?
 
 
-#PROBLEMA 7
+# Problema 7
 
 Se considera una tabla de decisión con 3 alternativas ($d_1, d_2, d_3$) y 4 estados de la naturaleza ($\omega_1, \omega_2, \omega_3, \omega_4$). Los valores de la matriz son:
 
@@ -183,7 +183,7 @@ $$
 
 Este problema será resuelto individualmente para cada criterio en las dos situaciones (favorable y desfavorable).
 
-#PROBLEMA 8
+# Problema 8
 
 Una empresa de inversiones está decidiendo entre tres estrategias de inversión ($E_A, E_B, E_C$) para el próximo año. Los resultados dependen de la evolución económica global: Recesión ($\omega_1$), Estancamiento ($\omega_2$), o Expansión ($\omega_3$). La siguiente tabla muestra los **costes** (en miles de euros) asociados a cada estrategia bajo cada escenario. La empresa busca **minimizar** los costes (situación **desfavorable**).
 
