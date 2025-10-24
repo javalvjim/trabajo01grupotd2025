@@ -10,7 +10,7 @@ En primer lugar cargamos las funciones:
 source("teoriadecision_funciones_incertidumbre.R")
 ```
 
-# Ejercicio 1
+# Problema 1
 
 Aplicar los criterios de decisión bajo incertidumbre al problema cuya matriz de valores numéricos vienen dada en la tabla siguiente:
 
@@ -171,7 +171,7 @@ De acuerdo con el criterio del Punto Ideal, la alternativa óptima es la d5.
 En situación desfavorable (costes), y teniendo en cuanta todos los criterios, la mejor alternativa es la d5.
 :::
 
-# Ejercicio 2
+# Problema 2
 
 Una oficina necesita contratar un plan de Internet confiable para sus operaciones diarias. Han recibido información de tres proveedores:
 
@@ -250,12 +250,7 @@ dibuja.criterio.Hurwicz_Intervalos(tb02, favorable=FALSE, mostrarGrafico=TRUE)
 Luego, teniendo en cuenta todos los criterios, la mejor alternativa es "A2. Proveedor Premium". Por tanto, la empresa debe contratar el plan de Internet con el Proveedor A2.
 :::
 
----
-title: "Soluciones - Trabajo individual Teoría de la Decisión"
-format: html
-editor: visual
----
-
+# Problema 3
 # Introducción
 
 En este documento se presentan las **soluciones** a los dos problemas planteados en el trabajo individual de la asignatura **Teoría de la Decisión**.\
@@ -363,7 +358,7 @@ Después de aplicar todos los criterios de decisión bajo incertidumbre, se ve q
 
 En resumen, todos los criterios coinciden en que `d1` es la alternativa más sólida y equilibrada. Aunque `d3` tiene un valor alto en un estado, no logra destacar en los demás. Así que, si tuviera que tomar una decisión con esta información, `d1` sería claramente la más recomendable.
 
-# Problema 2
+# Problema 4
 
 ```{r}
 # Definir la matriz de costes 
@@ -457,7 +452,7 @@ vals_hur <- data.frame(
 knitr::kable(vals_hur, caption = "Valores de Hurwicz por alternativa (α = 0.6)")
 ```
 
-### Interpretación del problema 2
+### Interpretación del problema 4
 
 En este problema, Ana está valorando contratar un seguro médico privado y quiere minimizar el coste total durante el primer año, sin saber con certeza si quedará embarazada ni cuándo dará a luz. Se han evaluado tres aseguradoras: **Security**, **Curadita** y **Preventiva**, en función de tres escenarios posibles.
 
@@ -473,7 +468,7 @@ Al aplicar los criterios de decisión bajo incertidumbre:
 
 En resumen, aunque **Security** tiene el coste más bajo en el mejor escenario, **Curadita** es la opción más estable y segura en todos los escenarios posibles. Si Ana quiere evitar sorpresas y mantener el coste bajo control, **Curadita** sería la alternativa más recomendable.
 
-# Problema 1
+# Problema 5
 
 Aplicar los diferentes criterios de decisión bajo incertidumbre al problema representado por la siguiente matriz de valores.
 
@@ -648,7 +643,7 @@ criterios
 
 En un escenario desfavorable, y considerando todos los criterios de decisión, la alternativa óptima resulta ser la d2.
 
-# Problema 2
+# Problema 6
 
 Dalia ha decidido que quiere mejorar su forma física y empezar una rutina de ejercicio regular. El problema es que no sabe exactamente qué tan constante será con el deporte, y no quiere gastar más dinero del necesario si luego se aburre o tiene que dejarlo por algún imprevisto. Ha encontrado tres opciones distintas para hacer ejercicio, pero no sabe cuál es la más conveniente teniendo en cuenta que su objetivo es minimizar el gasto total a lo largo de un año.
 
@@ -715,7 +710,7 @@ criterios
 
 La mejor decisión para Dalia es optar por la suscripción anual al gimnasio. Esta alternativa es seleccionada como óptima en 5 de los 6 criterios, lo que indica que, aunque suponga un coste fijo inicial elevado, resulta ser la más estable y segura ante cualquier escenario posible.
 
-#PROBLEMA 1
+# Problema 7
 
 Se considera una tabla de decisión con 3 alternativas ($d_1, d_2, d_3$) y 4 estados de la naturaleza ($\omega_1, \omega_2, \omega_3, \omega_4$). Los valores de la matriz son:
 
@@ -870,7 +865,7 @@ En la situación favorable, la mejor alternativa es d1, ya que es la elegida por
 
 En la situación desfavorable, la mejor alternativa es d3, ya que es elegida por todos los métodos, ya que tiene el mínimo coste (1) y el menor coste promedio (7).
 
-#PROBLEMA 2
+# Problema 8
 
 Una empresa de inversiones está decidiendo entre tres estrategias de inversión ($E_A, E_B, E_C$) para el próximo año. Los resultados dependen de la evolución económica global: Recesión (R), Estancamiento (S), o Expansión (P). La siguiente tabla muestra los **costes** (en miles de euros) asociados a cada estrategia bajo cada escenario. La empresa busca **minimizar** los costes (situación **desfavorable**).
 
