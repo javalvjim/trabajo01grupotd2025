@@ -25,11 +25,11 @@ Los scripts R asociados son:
 
 - **Enunciados de los problemas**
     
-    + "Enunciados.R" 
+    + "Enunciados.qmd" 
 
 - **Soluciones de los problemas**
     
-    + "Soluciones.R" 
+    + "Soluciones.qmd" 
     
 # Organización
 
